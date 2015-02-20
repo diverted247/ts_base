@@ -13,4 +13,4 @@ gulp compile
 gulp watch
 - Watches for changes to /src/ files, Compiles TypeScript to /dist/app.js, uglifies to /dist/app.min.ts
 
-Enjoy! @__ted__ :)
+Enjoy! Ted :)
