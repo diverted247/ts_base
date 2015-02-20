@@ -1,0 +1,17 @@
+{
+  "name": "ts_base",
+  "version": "0.0.1",
+  "description": "A simple TypeScript + Gulp starter project",
+  "author": "Ted Patrick ( http://light.ly )",
+  "license": "BSD",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-connect": "^2.2.0",
+    "gulp-uglify": "^1.1.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-shell": "^0.3.0",
+    "gulp-tsc": "^0.9.2",
+    "typescript": "^1.4.1"
+  },
+  "repository": "diverted247/ts_base"
+}

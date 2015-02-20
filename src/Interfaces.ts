@@ -1,0 +1,1 @@
+//Interfaces.ts - Place for ad-hoch definition and interfaces
