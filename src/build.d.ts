@@ -4,5 +4,5 @@
 // If you are using module export/import... make sure to add the "module" compiler flag.
 // 
 // references for TSC compiler
-/// <reference path='Interfaces.ts' />
+/// <reference path='Interfaces.d.ts' />
 /// <reference path='App.ts' />

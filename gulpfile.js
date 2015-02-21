@@ -3,32 +3,34 @@ var ts      = require( 'gulp-tsc' );
 var connect = require( 'gulp-connect' );
 var shell   = require( 'gulp-shell' );
 var uglify  = require( 'gulp-uglify' );
-var rename  = require( 'gulp-rename' );
+var del     = require( 'del' );
 
+gulp.task( 'clean' , function( cb ){
+  del([ './dist' ], cb );
+});
 
-gulp.task( 'compile' , function(){
+gulp.task( 'build' , [ 'clean' ] , function(){
     return gulp.src( [ './src/build.d.ts' ] )
         .pipe( ts( {
             target: 'ES5',
-            out: 'app.js',
             outDir: './dist',
+            //module: 'amd',
             emitError: true,
-            declaration: true,
+            declaration: false,
             removeComments: true
         } ) )
         .pipe( gulp.dest( './dist' ) );
 });
 
 
-gulp.task( 'build' , [ 'compile' ] , function(){
-   gulp.src( ['./dist/app.js' ] )
-      .pipe( uglify() )
-      .pipe( rename({ suffix: '.min' } ) )
+gulp.task( 'minify' , [ 'build' ] , function(){
+   gulp.src( './dist/**' )
+      .pipe( uglify() ) 
       .pipe( gulp.dest( './dist/' ) )
 });
 
 
-gulp.task( 'server' , [ 'build' ] , function () {
+gulp.task( 'server' , [ 'minify' ] , function () {
   connect.server({
     port: 8081
   })
@@ -36,7 +38,7 @@ gulp.task( 'server' , [ 'build' ] , function () {
 
 
 gulp.task( 'watch' , function (){
-    gulp.watch( 'src/**/*.ts' , [ 'build' ] )
+    gulp.watch( 'src/**/*.ts' , [ 'minify' ] )
 });
 
 
@@ -46,4 +48,8 @@ gulp.task( 'browser' , [ 'server' ] , shell.task( [
 
 
 gulp.task( 'default' , [ 'browser' ] );
+
+gulp.task( 'dev' , [ 'build' ] );
+
+gulp.task( 'prod' , [ 'minify' ] );
 
