@@ -11,6 +11,6 @@
 - Compiles TSC into /dist/
 
 ### gulp watch
-- Watches for changes to /src/ files, Compiles TypeScript to /dist/app.js
+- Watches for changes to /src/ files, Compiles TypeScript to /dist/App.js
 
 ### Enjoy! Ted :)
